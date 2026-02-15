@@ -3,8 +3,6 @@ components/
 managed_components/
 build/
 dist/
-.vscode/
-.devcontainer/
 sdkconfig.old
 sdkconfig
 dependencies.lock
@@ -17,4 +15,3 @@ main/mmap_generate_emoji.h
 *.pyc
 *.bin
 mmap_generate_*.h
-.clangd

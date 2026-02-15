@@ -1,0 +1,34 @@
+{
+	"name": "xz-esp32",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"containerEnv": {
+    },
+	"workspaceFolder": "/workspace",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"idf.showOnboardingOnInit": false,
+				"idf.toolsPath": "/opt/esp",
+				"idf.espIdfPath": "/opt/esp/idf",
+				"idf.pythonBinPath": "/opt/esp/python_env/idf4.2_py3.6_env/bin/python",
+				"idf.port": "/dev/ttyUSB0"
+			},
+			"extensions": [
+				"espressif.esp-idf-extension",
+				"ms-vscode.cmake-tools",
+				"cucumberopen.cucumber-official"
+			]
+		}
+	},
+	"mounts": [
+		"source=extensionCache,target=/root/.vscode-server/extensions,type=volume",
+		"source=/dev,target=/dev,type=bind",
+		"source=/root/.codex,target=/root/.codex,type=bind",
+		"source=/root/.vscode-server,target=/root/.vscode-server,type=bind"
+	],
+	"userEnvProbe": "loginInteractiveShell",
+	"runArgs": ["--privileged"]
+}
