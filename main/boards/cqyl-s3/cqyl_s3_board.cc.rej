@@ -1,0 +1,12 @@
+diff a/main/boards/cqyl-s3/cqyl_s3_board.cc b/main/boards/cqyl-s3/cqyl_s3_board.cc	(rejected hunks)
+@@ -95,8 +95,8 @@
+                 vTaskDelay(pdMS_TO_TICKS(1000));
+             }
+             
+-            // 发送listen消息，触发服务器的chat功能
+-            app.SendListenMessage("你摸了我的眼睛，谢谢你");
++            // 发送listen消息，触发服务器的chat功能，使用"请读"指令让服务器直接读这些文字
++            app.SendListenMessage("请读：你摸了我的眼睛，谢谢你");
+ 
+         }); });
+         hug2_button_.OnClick([this]()
