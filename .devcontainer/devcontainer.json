@@ -4,6 +4,9 @@
 		"dockerfile": "Dockerfile"
 	},
 	"containerEnv": {
+		"http_proxy": "http://127.0.0.1:7890",
+		"https_proxy": "http://127.0.0.1:7890",
+		"no_proxy": "localhost"
     },
 	"workspaceFolder": "/workspace",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
@@ -30,5 +33,5 @@
 		"source=/root/.vscode-server,target=/root/.vscode-server,type=bind"
 	],
 	"userEnvProbe": "loginInteractiveShell",
-	"runArgs": ["--privileged"]
+	"runArgs": ["--privileged", "--network=host"]
 }

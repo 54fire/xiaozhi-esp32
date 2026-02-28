@@ -9,8 +9,8 @@
         "--background-index",
         "-j=12",
         "--pch-storage=disk",
-        "--query-driver=/opt/esp/tools/esp-clang/esp-19.1.2_20250312/esp-clang/bin/riscv32-esp-elf-g++",
         "--query-driver=/opt/esp/tools/xtensa-esp-elf/esp-14.2.0_20250730/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc",
+        "--query-driver=/opt/esp/tools/xtensa-esp-elf/esp-14.2.0_20250730/xtensa-esp-elf/bin/xtensa-esp32s3-elf-g++",
         "--compile-commands-dir=/workspace/build/"
     ]
 }
