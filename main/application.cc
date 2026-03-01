@@ -1036,6 +1036,40 @@ void Application::WakeWordInvoke(const std::string& wake_word) {
         }
         // Channel already opened, continue directly
         ContinueWakeWordInvoke(wake_word);
+    } else if (state == kDeviceStateSpeaking || state == kDeviceStateListening) {
+        AbortSpeaking(kAbortReasonWakeWordDetected);
+        while (audio_service_.PopPacketFromSendQueue());
+        if (state == kDeviceStateListening) {
+            protocol_->SendStartListening(GetDefaultListeningMode());
+            audio_service_.ResetDecoder();
+            audio_service_.EnableWakeWordDetection(true);
+        } else {
+            // Play popup sound and start listening again
+            play_popup_on_listening_ = true;
+            SetListeningMode(GetDefaultListeningMode());
+        }
+        audio_service_.EncodeWakeWord();
+        if (!protocol_->IsAudioChannelOpened()) {
+            if (!protocol_->OpenAudioChannel()) {
+                audio_service_.EnableWakeWordDetection(true);
+                return;
+            }
+        }
+
+        ESP_LOGI(TAG, "Wake word detected: %s", wake_word.c_str());
+#if CONFIG_SEND_WAKE_WORD_DATA
+        // Encode and send the wake word data to the server
+        while (auto packet = audio_service_.PopWakeWordPacket()) {
+            protocol_->SendAudio(std::move(packet));
+        }
+        // Set the chat state to wake word detected
+        protocol_->SendWakeWordDetected(wake_word);
+
+        // Set flag to play popup sound after state changes to listening
+        play_popup_on_listening_ = true;
+        SetListeningMode(GetDefaultListeningMode());
+#endif
+
     } else if (state == kDeviceStateSpeaking) {
         Schedule([this]() {
             AbortSpeaking(kAbortReasonNone);
