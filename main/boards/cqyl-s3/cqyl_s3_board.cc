@@ -35,7 +35,7 @@ public:
 class CqylS3Board : public DualNetworkBoard {
 private:
     i2c_master_bus_handle_t codec_i2c_bus_;
-    SingleLed* led_strip_;
+    CircularStrip* led_strip_;
 
     Button boot_button_;
     Button hug1_button_;
@@ -128,7 +128,8 @@ private:
     }
 
     void InitializeTools() {
-        led_strip_ = new SingleLed(BUILTIN_LED_GPIO);
+        led_strip_ = new CircularStrip(BUILTIN_LED_GPIO, 60);
+        new LedStripControl(led_strip_);
     }
 
 public:

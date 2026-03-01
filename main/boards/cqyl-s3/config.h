@@ -37,7 +37,7 @@
 #define ML307_DTR_PIN            GPIO_NUM_41
 
 // 灯光控制引脚 板子未使用的引脚
- #define BUILTIN_LED_GPIO       GPIO_NUM_15
+ #define BUILTIN_LED_GPIO       GPIO_NUM_5
 //  #define DISPLAY_BACKLIGHT_PIN GPIO_NUM_1
 //  #define DISPLAY_BACKLIGHT_OUTPUT_INVERT true
 
