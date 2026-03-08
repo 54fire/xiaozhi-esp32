@@ -119,16 +119,16 @@ private:
 
         boot_button_.OnLongPress([]() { ESP_LOGI(TAG, "Button is pressed, reset NVS flash"); });
 
-        RegisterTouchButton(hug1_button_, "hug1_button", "请读：你摸了我的眼睛，谢谢你");
-        RegisterTouchButton(hug2_button_, "hug2_button", "请读：你摸了我的头，谢谢你");
+        RegisterTouchButton(hug1_button_, "hug1_button", "请读：你摸了我的左睛，谢谢你");
+        RegisterTouchButton(hug2_button_, "hug2_button", "请读：你摸了我的右眼，谢谢你");
         RegisterTouchButton(head1_button_, "head1_button", "请读：你抱了我，谢谢你");
-        RegisterTouchButton(head2_button_, "head2_button", "请读：你摸了我的眼睛，谢谢你");
-        RegisterTouchButton(l_hand_button_, "l_hand_button", "请读：你摸了我的左手，谢谢你");
+        RegisterTouchButton(head2_button_, "head2_button", "请读：你摸了我的左手，谢谢你");
+        // RegisterTouchButton(l_hand_button_, "l_hand_button", "请读：你摸了我的左手，谢谢你");
         RegisterTouchButton(r_hand_button_, "r_hand_button", "请读：你摸了我的右手，谢谢你");
     }
 
     void InitializeTools() {
-        led_strip_ = new CircularStrip(BUILTIN_LED_GPIO, 60);
+        led_strip_ = new CircularStrip(BUILTIN_LED_GPIO, 147);
         new LedStripControl(led_strip_);
     }
 
