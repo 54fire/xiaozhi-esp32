@@ -4,8 +4,8 @@
 		"dockerfile": "Dockerfile"
 	},
 	"containerEnv": {
-		"http_proxy": "http://127.0.0.1:7890",
-		"https_proxy": "http://127.0.0.1:7890",
+		"http_proxy": "http://127.0.0.1:7897",
+		"https_proxy": "http://127.0.0.1:7897",
 		"no_proxy": "localhost"
     },
 	"workspaceFolder": "/workspace",
@@ -20,9 +20,10 @@
 				"idf.port": "/dev/ttyUSB0"
 			},
 			"extensions": [
-				"espressif.esp-idf-extension",
 				"ms-vscode.cmake-tools",
-				"cucumberopen.cucumber-official"
+				"cucumberopen.cucumber-official",
+				"Anthropic.claude-code",
+				"openai.chatgpt"
 			]
 		}
 	},
@@ -30,6 +31,7 @@
 		"source=extensionCache,target=/root/.vscode-server/extensions,type=volume",
 		"source=/dev,target=/dev,type=bind",
 		"source=/root/.codex,target=/root/.codex,type=bind",
+		"source=/root/.claude,target=/root/.claude,type=bind",
 		"source=/root/.vscode-server,target=/root/.vscode-server,type=bind"
 	],
 	"userEnvProbe": "loginInteractiveShell",
